@@ -10,12 +10,12 @@ First of all it allows you to define finch endpoints within the
 controllers and extract them later in the form of endpoints coproducts:
 
 ```scala
-import io.finch.__
+import io.finch._
 import ru.arkoit.finchrich._
 
 object MyAwesomeController extends Controller {
   val healthcheck = get("healthcheck") { Ok() }
-  val greeter = get("greet" / param("name")) { Ok(s"Hello, $name!") }
+  val greeter = get("greet" / param("name")) { name: String => Ok(s"Hello, $name!") }
 }
 
 // Get the coproduct of all endpoints from the MyAwesomeControlller
@@ -25,12 +25,12 @@ val ep = controllerToEndpoint(MyAwesomeController)
 Also it allows you to nest controllers like this:
 
 ```scala
-import io.finch.__
+import io.finch._
 import ru.arkoit.finchrich._
 
 object MyAwesomeController extends Controller {
   val healthcheck = get("healthcheck") { Ok() }
-  val greeter = get("greet" / param("name")) { Ok(s"Hello, $name!") }
+  val greeter = get("greet" / param("name")) {name: String => Ok(s"Hello, $name!") }
 }
 
 object AnotherAwesomeController extends Controller {
