@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/akozhemiakin/finchrich.svg?branch=master)](https://travis-ci.org/akozhemiakin/finchrich)
+
 This tiny project is a sort of experimental toolset which aims to allow 
 developers use finch more efficiently and with less boilerplate.
 
