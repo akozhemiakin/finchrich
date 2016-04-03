@@ -43,8 +43,8 @@ object MainController extends Controller {
   val c2 = AnotherAwesomeController
 }
 
-// Get the coproduct of all endpoints from the MyAwesomeControlller
-val ep = controllerToEndpoint(MyAwesomeController)
+// Get the coproduct of all endpoints from the MainController and nested controllers
+val ep = controllerToEndpoint(MainController)
 ```
 
 All of this stuff does not use any kind of runtime reflection and is
