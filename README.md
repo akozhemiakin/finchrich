@@ -6,6 +6,33 @@ developers use finch more efficiently and with less boilerplate.
 For now it offers only one thing to simplify your life with finch: 
 controllers implemented without any kind of runtime reflection.
 
+
+Installation
+------------
+For now there is only one module available. You can use the following _sbt_ snippet to install it:
+
+* for the _stable_ release:
+
+```scala
+libraryDependencies ++= Seq(
+  "ru.arkoit" %% "finchrich-controller" % "0.1.0"
+)
+```
+
+* for the `SNAPSHOT` version:
+
+```scala
+resolvers += Resolver.sonatypeRepo("snapshots")
+
+libraryDependencies ++= Seq(
+  "ru.arkoit" %% "finchrich-controller" % "0.1.1-SHANPSHOT"
+)
+```
+
+Usage
+-----
+As mentioned above, for now the project consists of the only module: finchrich-controller.
+
 First of all it allows you to define finch endpoints within the 
 controllers and extract them later in the form of endpoints coproducts:
 
