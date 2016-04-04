@@ -9,22 +9,30 @@ class FinchRichSpec extends FlatSpec with Matchers {
   behavior of "FinchRich"
 
   it should "be able to extract endpoints coproduct from the controller" in {
-    object A extends Controller {
+    class A extends Controller {
+      def this(bar: String) {
+        this()
+      }
+
       val ep1 = get("hello") { Ok("foo") }
       val ep2 = get("bar") { Ok() }
     }
 
     object B extends Controller {
       val ep1 = get("foos") { Ok("foo") }
-      val ep2 = get("bars") { Ok() }
+      def ep2 = get("bars") { Ok() }
     }
 
-    object C extends Controller {
-      val c1 = A
+    class C extends Controller {
+      def this(foo: String) {
+        this()
+      }
+
+      def c1 = new A
       val c2 = B
     }
 
-    val b = controllerToEndpoint(C)
+    val b = controllerToEndpoint(new C)
 
     def checkFinalType[T: TypeTag](b: T): Boolean = {
       typeOf[T] match {
