@@ -8,6 +8,11 @@ private[finchrich] object FinchRichMacro {
   def controllerToEndpoint[T <: Controller : c.WeakTypeTag](c: whitebox.Context)(cnt: c.Expr[T]): c.Expr[Any] = {
     import c.universe._
 
+    def symbolResultType(s: Symbol): Type = s match {
+      case x if x.isMethod => x.asMethod.returnType
+      case x => x.typeSignature
+    }
+
     def filterApplicableTerms(t: c.universe.Type) =
       t.members
         .filter(x => x.isTerm && x.isPublic)
@@ -22,7 +27,7 @@ private[finchrich] object FinchRichMacro {
 
     def extract(t: c.universe.Type, context: Tree): List[Tree] = {
       filterApplicableTerms(t).toList.flatMap{
-        case x if x.typeSignature.resultType <:< c.weakTypeOf[Controller] => extract(x.typeSignature.resultType, q"$context.${x.name.toTermName}")
+        case x if symbolResultType(x) <:< c.weakTypeOf[Controller] => extract(symbolResultType(x), q"$context.${x.name.toTermName}")
         case x => List(q"$context.${x.name.toTermName}")
       }
     }
