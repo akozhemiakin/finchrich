@@ -11,8 +11,7 @@ lazy val commonSettings = Seq (
     "org.scalatest" %% "scalatest" % "2.2.4" % "test",
     compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
   ),
-  // TODO: Adopt macros to be compatible with 2.10.6 and enable crosscompiling against it
-  crossScalaVersions := Seq("2.11.8"),
+  crossScalaVersions := Seq("2.11.8", "2.10.6"),
   scalacOptions ++= Seq("-feature", "-language:implicitConversions"),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
