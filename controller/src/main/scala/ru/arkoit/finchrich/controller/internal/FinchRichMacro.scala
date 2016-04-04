@@ -1,7 +1,7 @@
-package ru.arkoit.finchrich.internal
+package ru.arkoit.finchrich.controller.internal
 
 import io.finch.Endpoint
-import ru.arkoit.finchrich.Controller
+import ru.arkoit.finchrich.controller.Controller
 import scala.reflect.macros.whitebox
 
 private[finchrich] object FinchRichMacro {

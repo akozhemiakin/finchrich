@@ -1,4 +1,4 @@
-package ru.arkoit.finchrich
+package ru.arkoit.finchrich.controller
 
 import io.finch._
 import org.scalatest.{FlatSpec, Matchers}

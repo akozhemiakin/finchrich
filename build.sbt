@@ -21,12 +21,12 @@ lazy val commonSettings = Seq (
 
 lazy val finchrich = (project in file("."))
   .settings(commonSettings)
-  .aggregate(core)
+  .aggregate(controller)
 
-lazy val core = project
+lazy val controller = project
   .settings(commonSettings)
   .settings(Seq(
-    moduleName := "core",
+    moduleName := "finchrich-controller",
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "com.github.finagle" %% "finch-core" % versions.finch

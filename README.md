@@ -11,7 +11,7 @@ controllers and extract them later in the form of endpoints coproducts:
 
 ```scala
 import io.finch._
-import ru.arkoit.finchrich._
+import ru.arkoit.finchrich.controller._
 
 object MyAwesomeController extends Controller {
   val healthcheck = get("healthcheck") { Ok() }
@@ -26,7 +26,7 @@ Also it allows you to nest controllers like this:
 
 ```scala
 import io.finch._
-import ru.arkoit.finchrich._
+import ru.arkoit.finchrich.controller._
 
 object MyAwesomeController extends Controller {
   val healthcheck = get("healthcheck") { Ok() }
