@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/akozhemiakin/finchrich.svg?branch=master)](https://travis-ci.org/akozhemiakin/finchrich)
 
 This tiny project is a sort of experimental toolset which aims to allow 
-developers use finch more efficiently and with less boilerplate.
+developers use [Finch][finch] more efficiently and with less boilerplate.
 
-For now it offers only one thing to simplify your life with finch: 
+For now it offers only one thing to simplify your life with Finch: 
 controllers implemented without any kind of runtime reflection.
 
 
@@ -33,7 +33,7 @@ Usage
 -----
 As mentioned above, for now the project consists of the only module: finchrich-controller.
 
-First of all it allows you to define finch endpoints within the 
+First of all it allows you to define Finch endpoints within the 
 controllers and extract them later in the form of endpoints coproducts:
 
 ```scala
@@ -81,3 +81,5 @@ you usually write by hand, like this:
 ```scala
 val ep = MainController.c1.healthcheck :+: MainController.c1.greeter :+: MainController.c2.joke
 ```
+
+[Finch]: https://github.com/finagle/finch
