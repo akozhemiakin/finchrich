@@ -15,7 +15,7 @@ private[finchrich] object FinchRichMacro {
 
     def filterApplicableTerms(t: c.universe.Type) =
       t.members
-        .filter(x => x.isTerm && x.isPublic)
+        .filter(x => x.isTerm && x.isPublic && !x.isSynthetic)
         .map(_.asTerm)
         .filter{
           case x if x.isMethod =>
