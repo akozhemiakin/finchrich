@@ -15,7 +15,7 @@ For now there is only one module available. You can use the following _sbt_ snip
 
 ```scala
 libraryDependencies ++= Seq(
-  "ru.arkoit" %% "finchrich-controller" % "0.1.0"
+  "ru.arkoit" %% "finchrich-controller" % "0.1.1"
 )
 ```
 
@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 libraryDependencies ++= Seq(
-  "ru.arkoit" %% "finchrich-controller" % "0.1.1-SHANPSHOT"
+  "ru.arkoit" %% "finchrich-controller" % "0.1.2-SHANPSHOT"
 )
 ```
 
