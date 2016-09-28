@@ -3,17 +3,20 @@ package ru.arkoit.finchrich.controller.internal
 import io.finch.Endpoint
 import ru.arkoit.finchrich.controller.Controller
 import scala.reflect.macros.whitebox
+import macrocompat.bundle
 
-private[finchrich] object FinchRichMacro {
-  def controllerToEndpoint[T <: Controller : c.WeakTypeTag](c: whitebox.Context)(cnt: c.Expr[T]): c.Expr[Any] = {
-    import c.universe._
+@bundle
+private[finchrich] class FinchRichMacro(val c: whitebox.Context) {
+  import c.universe._
+
+  def controllerToEndpoint[T <: Controller : c.WeakTypeTag](cnt: c.Expr[T]): Tree = {
 
     def symbolResultType(s: Symbol): Type = s match {
       case x if x.isMethod => x.asMethod.returnType
       case x => x.typeSignature
     }
 
-    def filterApplicableTerms(t: c.universe.Type) =
+    def filterApplicableTerms(t: Type) =
       t.members
         .filter(x => x.isTerm && x.isPublic && !x.isSynthetic)
         .map(_.asTerm)
@@ -25,7 +28,7 @@ private[finchrich] object FinchRichMacro {
           case _ => false
         }
 
-    def extract(t: c.universe.Type, context: Tree): List[Tree] = {
+    def extract(t: Type, context: Tree): List[Tree] = {
       filterApplicableTerms(t).toList.flatMap{
         case x if symbolResultType(x) <:< c.weakTypeOf[Controller] => extract(symbolResultType(x), q"$context.${x.name.toTermName}")
         case x => List(q"$context.${x.name.toTermName}")
@@ -40,14 +43,12 @@ private[finchrich] object FinchRichMacro {
       case x => x
     }
 
-    val code = q"""
-        import io.finch._
-        import shapeless._
-        import ru.arkoit.finchrich._
+    q"""
+      import io.finch._
+      import shapeless._
+      import ru.arkoit.finchrich._
 
-        $v
+      $v
       """
-
-    c.Expr(code)
   }
 }

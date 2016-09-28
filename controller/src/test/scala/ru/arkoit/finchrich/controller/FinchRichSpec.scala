@@ -44,7 +44,7 @@ class FinchRichSpec extends FlatSpec with Matchers {
     assert(checkFinalType(b))
 
     // Finally, check that the resulting endpoint may be smoothly converted to the finagle service
-    b.toService
+    b.toServiceAs[Text.Plain]
   }
 
   it should "be able to extract endpoints coproduct from the case class controller" in {
@@ -55,6 +55,6 @@ class FinchRichSpec extends FlatSpec with Matchers {
     }
 
     val epc = controllerToEndpoint(new A(new B))
-    val service = epc.toService
+    val service = epc.toServiceAs[Text.Plain]
   }
 }

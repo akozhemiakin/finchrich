@@ -1,6 +1,6 @@
 lazy val versions = new {
   val scala = "2.11.8"
-  val finch = "0.10.0"
+  val finch = "0.11.0-M3"
 }
 
 lazy val commonSettings = Seq (
@@ -9,7 +9,8 @@ lazy val commonSettings = Seq (
   scalaVersion := versions.scala,
   libraryDependencies ++= Seq(
     "org.scalatest" %% "scalatest" % "2.2.4" % "test",
-    compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+    compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+    "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided"
   ),
   crossScalaVersions := Seq("2.11.8", "2.10.6"),
   scalacOptions ++= Seq("-feature", "-language:implicitConversions"),
