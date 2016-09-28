@@ -4,7 +4,7 @@ lazy val versions = new {
 }
 
 lazy val commonSettings = Seq (
-  version := "0.1.2",
+  version := "0.1.3-SNAPSHOT",
   organization := "ru.arkoit",
   scalaVersion := versions.scala,
   libraryDependencies ++= Seq(
