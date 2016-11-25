@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 libraryDependencies ++= Seq(
-  "ru.arkoit" %% "finchrich-controller" % "0.1.3-SNAPSHOT"
+  "ru.arkoit" %% "finchrich-controller" % "0.2.0-SNAPSHOT"
 )
 ```
 
@@ -46,7 +46,7 @@ object MyAwesomeController extends Controller {
 }
 
 // Get the coproduct of all endpoints from the MyAwesomeControlller
-val ep = controllerToEndpoint(MyAwesomeController)
+val ep = MyAwesomeController.toEndpoint
 ```
 
 Also it allows you to nest controllers like this:
@@ -71,7 +71,7 @@ object MainController extends Controller {
 }
 
 // Get the coproduct of all endpoints from the MainController and nested controllers
-val ep = controllerToEndpoint(MainController)
+val ep = MainController.toEndpoint
 ```
 
 All of this stuff does not use any kind of runtime reflection and is

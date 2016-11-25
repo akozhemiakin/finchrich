@@ -1,10 +1,10 @@
 lazy val versions = new {
   val scala = "2.11.8"
-  val finch = "0.11.0-M3"
+  val finch = "0.11.0-M4"
 }
 
 lazy val commonSettings = Seq (
-  version := "0.1.3-SNAPSHOT",
+  version := "0.2.0-SNAPSHOT",
   organization := "ru.arkoit",
   scalaVersion := versions.scala,
   libraryDependencies ++= Seq(
@@ -12,7 +12,7 @@ lazy val commonSettings = Seq (
     compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
     "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided"
   ),
-  crossScalaVersions := Seq("2.11.8", "2.10.6"),
+  crossScalaVersions := Seq("2.11.8"),
   scalacOptions ++= Seq("-feature", "-language:implicitConversions"),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
