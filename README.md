@@ -46,6 +46,8 @@ object MyAwesomeController extends Controller {
 }
 
 // Get the coproduct of all endpoints from the MyAwesomeControlller
+val ep = controllerToEndpoint(MyAwesomeController)
+// ... or the same thing in finchrich >= 0.2.0
 val ep = MyAwesomeController.toEndpoint
 ```
 
@@ -71,6 +73,8 @@ object MainController extends Controller {
 }
 
 // Get the coproduct of all endpoints from the MainController and nested controllers
+val ep = controllerToEndpoint(MainController.toEndpoint)
+// ... or the same thing in finchrich >= 0.2.0
 val ep = MainController.toEndpoint
 ```
 
