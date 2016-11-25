@@ -73,7 +73,7 @@ object MainController extends Controller {
 }
 
 // Get the coproduct of all endpoints from the MainController and nested controllers
-val ep = controllerToEndpoint(MainController.toEndpoint)
+val ep = controllerToEndpoint(MainController)
 // ... or the same thing in finchrich >= 0.2.0
 val ep = MainController.toEndpoint
 ```
