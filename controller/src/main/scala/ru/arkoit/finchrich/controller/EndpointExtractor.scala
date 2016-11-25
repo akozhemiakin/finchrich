@@ -23,7 +23,7 @@ object EndpointExtractor {
   }
 
   trait ToOps {
-    implicit def toControllerToEndpointOps[A <: Controller]
+    implicit def toEndpointExtractorOps[A <: Controller]
       (c: A)(implicit cte: EndpointExtractor[A]): Ops[A, cte.R] =
       new Ops[A, cte.R] {
         override def toEndpoint: Endpoint[cte.R] = cte(c)
