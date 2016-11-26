@@ -29,6 +29,9 @@ libraryDependencies ++= Seq(
 )
 ```
 
+FinchRich up to 0.1.2 supports both Scala 2.10.6 and 2.11.8. In FinchRich 0.2.0 Scala 2.10.6 support
+will be dropped. Support for Scala 2.12 will be introduced shortly after Finch will support it.
+
 Usage
 -----
 As mentioned above, for now the project consists of the only module: finchrich-controller.
